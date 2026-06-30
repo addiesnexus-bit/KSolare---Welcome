@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSolare - Welcome</title>
+    
+    <!-- Google Fonts: Noto Sans Devanagari -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #FF6B00;
+            --primary-dark: #E66000;
+            --bg-color: #F0F4F8;
+            --surface: #FFFFFF;
+            --text-main: #2D3748;
+            --text-muted: #718096;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 20px 15px;
+        }
+
+        /* Mobile First Container */
+        .app-container {
+            max-width: 420px;
+            width: 100%;
+            background-color: var(--surface);
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            position: relative;
+            opacity: 0;
+            animation: fadeInPage 0.8s ease-out forwards;
+        }
+
+        /* Language Toggle Styling */
+        .lang-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+            background: var(--surface);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:active {
+            transform: scale(0.95);
+        }
+
+        /* Entrance Animation */
+        @keyframes fadeInPage {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header Area with Sun Decoration */
+        .header {
+            position: relative;
+            padding: 40px 20px 20px;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(255, 107, 0, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+            overflow: hidden;
+        }
+
+        /* Subtle Sun SVG */
+        .sun-decor {
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 140px;
+            height: 140px;
+            opacity: 0.15;
+            pointer-events: none;
+            animation: rotateSun 60s linear infinite;
+        }
+
+        @keyframes rotateSun {
+            100% { transform: rotate(360deg); }
+        }
+
+        .logo {
+            max-width: 220px;
+            height: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Content Area */
+        .content {
+            padding: 10px 25px 30px;
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        p {
+            margin-bottom: 18px;
+            text-align: justify;
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Call To Action Buttons */
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background-color: var(--primary);
+            color: #FFFFFF;
+            text-decoration: none;
+            padding: 15px 24px;
+            border-radius: 50px; /* Pill Shape */
+            font-size: 16px;
+            font-weight: 600;
+            margin: 10px 0 24px 0;
+            box-shadow: 0 6px 16px rgba(255, 107, 0, 0.25);
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            user-select: none;
+        }
+
+        .btn:hover {
+            box-shadow: 0 8px 20px rgba(255, 107, 0, 0.35);
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+            box-shadow: 0 3px 8px rgba(255, 107, 0, 0.2);
+        }
+
+        .btn-icon {
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        /* Ripple Effect */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(0);
+            animation: rippleAnim 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes rippleAnim {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: var(--text-muted);
+            border-top: 1px solid #E2E8F0;
+            background-color: #FAFCFF;
+        }
+
+        /* Responsive Tweaks */
+        @media (max-width: 360px) {
+            .content { padding: 10px 20px 25px; }
+            .btn { font-size: 15px; padding: 14px 20px; }
+            .logo { max-width: 180px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <!-- Translation Toggle -->
+        <button class="lang-toggle" id="langToggle">English</button>
+
+        <div class="header">
+            <!-- Decorative Sun SVG -->
+            <svg class="sun-decor" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="25" fill="#FF6B00"/>
+                <path d="M50 0 L55 15 L50 20 L45 15 Z" fill="#FF6B00" transform="translate(0, 0)"/>
+                <path d="M50 0 L55 15 L50 20 L45 15 Z" fill="#FF6B00" transform="rotate(45 50 50)"/>
+                <path d="M50 0 L55 15 L50 20 L45 15 Z" fill="#FF6B00" transform="rotate(90 50 50)"/>
+                <path d="M50 0 L55 15 L50 20 L45 15 Z" fill="#FF6B00" transform="rotate(135 50 50)"/>
+                <path d="M50 0 L55 15 L50 20 L45 15 Z" fill="#FF6B00" transform="rotate(180 50 50)"/>
+                <path d="M50 0 L55 15 L50 20 L45 15 Z" fill="#FF6B00" transform="rotate(225 50 50)"/>
+                <path d="M50 0 L55 15 L50 20 L45 15 Z" fill="#FF6B00" transform="rotate(270 50 50)"/>
+                <path d="M50 0 L55 15 L50 20 L45 15 Z" fill="#FF6B00" transform="rotate(315 50 50)"/>
+            </svg>
+            <img src="http://ksolare.com/wp-content/uploads/2025/03/20250301_190029-e1741372790905-300x110.png" alt="KSolare Logo" class="logo" onerror="this.src='https://via.placeholder.com/300x110/ffffff/FF6B00?text=KSolare'">
+        </div>
+
+        <div class="content">
+            <p data-hi="नमस्कार.. KSolare परिवार में आपका स्वागत है। नया KSolare इन्वर्टर खरीदने पर आपको बहुत बधाई।" data-en="Namaskar.. Welcome to the KSolare family. Congratulations on purchasing your new KSolare inverter.">नमस्कार.. KSolare परिवार में आपका स्वागत है। नया KSolare इन्वर्टर खरीदने पर आपको बहुत बधाई।</p>
+            
+            <p>
+                <span data-hi="KSolare भारत का सबसे भरोसेमंद और सबसे ज्यादा बिकने वाला ग्रिड-टाई इन्वर्टर है। आपका यह " data-en="KSolare is India's most trusted and highest-selling grid-tie inverter. Your ">KSolare भारत का सबसे भरोसेमंद और सबसे ज्यादा बिकने वाला ग्रिड-टाई इन्वर्टर है। आपका यह </span><span class="highlight" id="val-kw"></span> <span data-hi=" किलोवाट " data-en=" kW "> किलोवाट </span><span class="highlight" id="val-mppt"></span> <span data-hi=" MPPT स्ट्रिंग इन्वर्टर " data-en=" MPPT string inverter supports "> MPPT स्ट्रिंग इन्वर्टर </span><span class="highlight" id="val-pw1"></span> <span data-hi=" वॉट " data-en=" Watt "> वॉट </span><span class="highlight" id="val-pt1"></span> <span data-hi=" के " data-en=" "> के </span><span class="highlight" id="val-pc1"></span> <span data-hi=" पैनल या " data-en=" panels or "> पैनल या </span><span class="highlight" id="val-pw2"></span> <span data-hi=" वॉट " data-en=" Watt "> वॉट </span><span class="highlight" id="val-pt2"></span> <span data-hi=" के " data-en=" "> के </span><span class="highlight" id="val-pc2"></span> <span data-hi=" पैनल सपोर्ट करता है। कृपया ध्यान दें: इस सिस्टम की अधिकतम इनपुट PV वोल्टेज " data-en=" panels. Please note: The maximum input PV voltage of this system is "> पैनल सपोर्ट करता है। कृपया ध्यान दें: इस सिस्टम की अधिकतम इनपुट PV वोल्टेज </span><span class="highlight" id="val-mv"></span>V <span data-hi=" है।" data-en="."> है।</span>
+            </p>
+
+            <p data-hi="अगर आपका सोलर सिस्टम ठीक से काम न करे, तो पहले अपने सोलर वेंडर से संपर्क करें। यदि KSolare प्रोडक्ट में कोई समस्या हो, तो वेंडर से प्रारंभिक जांच के बाद और सिस्टम को ऑनलाइन रखते हुए xxxxx पर शिकायत दर्ज करवाएं। ध्यान रहे: शिकायत तभी दर्ज होगी जब प्रारंभिक जांच हो चुकी हो और सिस्टम ऑनलाइन हो।" data-en="If your solar system is not working correctly, please first contact your solar vendor. If there is an issue with the KSolare product, register a complaint at xxxxx after a preliminary check by the vendor and while keeping the system online. Note: A complaint will only be registered once the preliminary check is complete and the system is online.">अगर आपका सोलर सिस्टम ठीक से काम न करे, तो पहले अपने सोलर वेंडर से संपर्क करें। यदि KSolare प्रोडक्ट में कोई समस्या हो, तो वेंडर से प्रारंभिक जांच के बाद और सिस्टम को ऑनलाइन रखते हुए <strong>xxxxx</strong> पर शिकायत दर्ज करवाएं। ध्यान रहे: शिकायत तभी दर्ज होगी जब प्रारंभिक जांच हो चुकी हो और सिस्टम ऑनलाइन हो।</p>
+
+            <p data-hi="KSolare इन्वर्टर पर आपको 10 साल की वारंटी मिलती है। वारंटी की नियम व शर्तें जानने के लिए और 1 साल की अतिरिक्त एक्सटेंडेड वारंटी registration के लिए कृपया 1 दबाएं।" data-en="You get a 10-year warranty on KSolare inverters. To learn about the terms and conditions and for a 1-year extra extended warranty registration, please press 1.">KSolare इन्वर्टर पर आपको 10 साल की वारंटी मिलती है। वारंटी की नियम व शर्तें जानने के लिए और 1 साल की अतिरिक्त एक्सटेंडेड वारंटी registration के लिए कृपया 1 दबाएं।</p>
+            <a href="REPLACE_WITH_REAL_LINK" class="btn ripple-btn">
+                <span class="btn-icon">📋</span> <span data-hi="वारंटी रजिस्ट्रेशन करें" data-en="Register Warranty">वारंटी रजिस्ट्रेशन करें</span>
+            </a>
+
+            <p data-hi="फ्री यूरोप ट्रिप लकी ड्रॉ में भाग लेने के लिए, आप और आपके सोलर वेंडर, KSolare इन्वर्टर के साथ अपनी फोटो एक अच्छे कैप्शन के साथ सोशल मीडिया पर पोस्ट करें और KSolare को टैग करें। इसके बाद रजिस्ट्रेशन पूरा करने के लिए 2 दबाएं।" data-en="To participate in the free Europe Trip Lucky Draw, you and your solar vendor should post your photo with the KSolare inverter along with a good caption on social media and tag KSolare. Then press 2 to complete registration.">फ्री यूरोप ट्रिप लकी ड्रॉ में भाग लेने के लिए, आप और आपके सोलर वेंडर, KSolare इन्वर्टर के साथ अपनी फोटो एक अच्छे कैप्शन के साथ सोशल मीडिया पर पोस्ट करें और KSolare को टैग करें। इसके बाद रजिस्ट्रेशन पूरा करने के लिए 2 दबाएं।</p>
+            <a href="REPLACE_WITH_REAL_LINK" class="btn ripple-btn">
+                <span class="btn-icon">🎉</span> <span data-hi="लकी ड्रॉ रजिस्ट्रेशन करें" data-en="Register for Lucky Draw">लकी ड्रॉ रजिस्ट्रेशन करें</span>
+            </a>
+
+            <p data-hi="वाईफाई कॉन्फिग्रेशन में सहायता के लिए 3 दबाएं।" data-en="Press 3 for assistance with WiFi configuration.">वाईफाई कॉन्फिग्रेशन में सहायता के लिए 3 दबाएं।</p>
+            <a href="REPLACE_WITH_REAL_LINK" class="btn ripple-btn">
+                <span class="btn-icon">📶</span> <span data-hi="WiFi कॉन्फिगर करें" data-en="Configure WiFi">WiFi कॉन्फिगर करें</span>
+            </a>
+
+            <p data-hi="त्रुटि कोड और समस्या निवारण के लिए नीचे दबाएं।" data-en="For Error Codes and Troubleshooting, press below.">त्रुटि कोड और समस्या निवारण के लिए नीचे दबाएं।</p>
+            <a href="assets/images/error_pic" target="_blank" class="btn ripple-btn">
+                <span class="btn-icon">🛠️</span> <span data-hi="Error Code & Trouble Shooting" data-en="Error Code & Trouble Shooting">Error Code & Trouble Shooting</span>
+            </a>
+
+            <p data-hi="KSolare परिवार से जुड़ने के लिए आपका हार्दिक आभार।" data-en="Heartfelt thanks for joining the KSolare family.">KSolare परिवार से जुड़ने के लिए आपका हार्दिक आभार।</p>
+        </div>
+
+        <div class="footer">
+            &copy; 2025 KSolare | All Rights Reserved
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // URL Parameters Parsing
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // Hardcoded defaults as requested
+            const defaults = {
+                kw: '3',
+                mppt: 'सिंगल',
+                pw1: '540',
+                pt1: 'मोनो',
+                pc1: '6',
+                pw2: '550',
+                pt2: 'बाइफेशियल',
+                pc2: '5',
+                mv: '350'
+            };
+
+            // Helper to get URL param or fallback
+            const getValue = (key) => urlParams.get(key) || defaults[key];
+
+            // Injecting Data into HTML
+            const ids = ['kw', 'mppt', 'pw1', 'pt1', 'pc1', 'pw2', 'pt2', 'pc2', 'mv'];
+            ids.forEach(id => {
+                const el = document.getElementById(`val-${id}`);
+                if(el) {
+                    el.textContent = getValue(id);
+                }
+            });
+
+            // Language Toggle Logic
+            const langToggle = document.getElementById('langToggle');
+            let currentLang = 'hi';
+
+            langToggle.addEventListener('click', () => {
+                currentLang = currentLang === 'hi' ? 'en' : 'hi';
+                langToggle.textContent = currentLang === 'hi' ? 'English' : 'हिंदी';
+                
+                document.querySelectorAll('[data-hi]').forEach(el => {
+                    el.textContent = el.getAttribute(`data-${currentLang}`);
+                });
+            });
+
+            // Ripple Effect Logic for Buttons
+            const buttons = document.querySelectorAll('.ripple-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const clientX = e.clientX || (e.touches && e.touches[0].clientX) || rect.width / 2;
+                    const clientY = e.clientY || (e.touches && e.touches[0].clientY) || rect.height / 2;
+                    
+                    const x = clientX - rect.left;
+                    const y = clientY - rect.top;
+
+                    const ripple = document.createElement('span');
+                    ripple.classList.add('ripple');
+                    
+                    const size = Math.max(rect.width, rect.height);
+                    ripple.style.width = ripple.style.height = `${size}px`;
+                    ripple.style.left = `${x - size / 2}px`;
+                    ripple.style.top = `${y - size / 2}px`;
+
+                    this.appendChild(ripple);
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
